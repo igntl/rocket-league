@@ -17,48 +17,22 @@
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #030708; /* خلفية سوداء زمردية فائقة العمق */
+            background-color: #030708; /* خلفية سوداء زمردية فائقة العمق مستوحاة من خلفية اللوجو المرفق */
         }
-        
-        /* تأثير النيون الأخضر الصافي الموحد بدون دمج ألوان */
-        .neon-green-text {
-            color: #00FF66 !important;
-            font-weight: 800;
-            text-shadow: 
-                0 0 5px #00FF66,
-                0 0 10px #00FF66,
-                0 0 20px #00FF66,
-                0 0 40px #00FF66;
+        /* تأثير وهج خلفية اللوجو باللونين الزمردي والذهبي ليعطي عمقاً معدنياً */
+        .glow-logo {
+            filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.25)) drop-shadow(0 0 40px rgba(234, 179, 8, 0.15));
         }
-
-        /* نيون كلمة TITANIUM أعلى اليمين */
-        .neon-header-title {
-            color: #00FF66 !important;
-            font-weight: 900;
-            letter-spacing: 0.1em;
-            text-shadow: 
-                0 0 5px #00FF66,
-                0 0 12px #00FF66,
-                0 0 25px #00FF66;
-        }
-
-        /* نيون الشعار (Logo) أعلى اليمين وفي المنتصف */
-        .neon-logo {
-            filter: drop-shadow(0 0 8px #00FF66) drop-shadow(0 0 20px rgba(0, 255, 102, 0.6));
-        }
-
-        /* نصوص الشرح البيضاء الطبيعية بدون توهج لسهولة القراءة */
-        .normal-white-text {
-            color: #FFFFFF !important;
-            text-shadow: none !important;
-            opacity: 0.95;
-        }
-
-        /* إطار التوهج الأخضر الخفيف للخلفيات */
         .glow-green {
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.25);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
         }
-        
+        /* تدرج اللوجو الذهبي الزمردي الفخم */
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 40%, #fbbf24 80%, #eab308 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
         /* تجميل شريط التمرير */
         ::-webkit-scrollbar {
             width: 8px;
@@ -67,11 +41,11 @@
             background: #030708;
         }
         ::-webkit-scrollbar-thumb {
-            background: #00FF66;
+            background: #10b981;
             border-radius: 4px;
         }
         
-        /* أنيميشن الوميض الأحمر للقوانين */
+        /* أنيميشن الوميض الأحمر */
         @keyframes redPulse {
             0%, 100% {
                 transform: scale(1);
@@ -104,21 +78,21 @@
 </head>
 <body class="text-gray-100 min-h-screen flex flex-col justify-between">
 
-    <!-- شريط التنقل (Navbar) -->
+    <!-- شريط التنقل (Navbar) الموزع بنظام الـ Grid لسنترة القائمة بالملي -->
     <header class="border-b border-emerald-950 bg-[#070e10] sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-3 grid grid-cols-1 md:grid-cols-3 items-center gap-4">
             
-            <!-- اليمين: اللوجو النيون وبجانبه كلمة TITANIUM نيون -->
+            <!-- 1. اليمين: اللوجو وبجانبه كلمة Titanium فقط -->
             <div class="flex items-center gap-3 justify-center md:justify-start">
-                <img src="logo_clean.png" alt="Titanium Logo" onerror="this.src='https://cdn.discordapp.com/attachments/1525890867452186795/1527534321903210677/Screenshot_48-Photoroom.png?ex=6a5b02b2&is=6a59b132&hm=bcbc93392ae0d8ce89e2c2b1649a820cd61c5960d79cb5ce0cccd8ac4b0606c6&'" class="h-12 w-auto object-contain neon-logo">
+                <img src="logo_clean.png" alt="Titanium Logo" onerror="this.src='https://cdn.discordapp.com/attachments/1525890867452186795/1527534321903210677/Screenshot_48-Photoroom.png?ex=6a5b02b2&is=6a59b132&hm=bcbc93392ae0d8ce89e2c2b1649a820cd61c5960d79cb5ce0cccd8ac4b0606c6&'" class="h-12 w-auto object-contain glow-logo">
                 <div class="text-right">
-                    <div class="neon-header-title text-xl leading-none">
+                    <div class="font-extrabold tracking-wider text-xl text-emerald-400 leading-none">
                         TITANIUM
                     </div>
                 </div>
             </div>
             
-            <!-- المنتصف: القائمة الرئيسية متموضعة في السنتر الرياضي -->
+            <!-- 2. المنتصف: القائمة الرئيسية متموضعة في سنتر الصفحة الرياضي تماماً -->
             <nav class="flex gap-1.5 bg-[#030708] p-1 rounded-xl border border-emerald-950/60 justify-center mx-auto w-fit">
                 <button onclick="switchTab('home')" id="btn-home" class="nav-btn px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold transition">الرئيسية</button>
                 <button onclick="switchTab('register')" id="btn-register" class="nav-btn px-4 py-2 rounded-lg hover:bg-emerald-950/40 text-gray-300 transition">التسجيل</button>
@@ -126,7 +100,7 @@
                 <button onclick="switchTab('rules')" id="btn-rules" class="nav-btn px-4 py-2 rounded-lg hover:bg-emerald-950/40 text-gray-300 transition">القوانين</button>
             </nav>
 
-            <!-- اليسار: مساحة موازنة فارغة غير مرئية -->
+            <!-- 3. اليسار: مساحة موازنة فارغة غير مرئية تضمن بقاء المنتصف متسنتر تماماً في الشاشات الكبيرة -->
             <div class="hidden md:block"></div>
             
         </div>
@@ -138,7 +112,7 @@
         <!-- 1. الصفحة الرئيسية (Home Page) -->
         <section id="page-home" class="tab-content space-y-10 text-center">
             <div class="space-y-4">
-                <!-- شريط المقاعد -->
+                <!-- شريط المقاعد موسط بالكامل داخل حاوية Flex -->
                 <div class="flex justify-center">
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-semibold border border-emerald-500/20">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
@@ -146,14 +120,13 @@
                     </div>
                 </div>
                 
-                <!-- اللوجو بوهج نيون أخضر فخم -->
+                <!-- تم تكبير اللوجو هنا في المساحة المخصصة فوق العنوان (h-80 يعطي حجماً ضخماً ومهيباً) -->
                 <div class="flex justify-center py-4">
-                    <img src="logo_clean.png" alt="Titanium Logo Large" onerror="this.src='https://cdn.discordapp.com/attachments/1525890867452186795/1527534321903210677/Screenshot_48-Photoroom.png?ex=6a5b02b2&is=6a59b132&hm=bcbc93392ae0d8ce89e2c2b1649a820cd61c5960d79cb5ce0cccd8ac4b0606c6&'" class="h-72 md:h-80 w-auto object-contain neon-logo transform hover:scale-105 transition duration-300">
+                    <img src="logo_clean.png" alt="Titanium Logo Large" onerror="this.src='https://cdn.discordapp.com/attachments/1525890867452186795/1527534321903210677/Screenshot_48-Photoroom.png?ex=6a5b02b2&is=6a59b132&hm=bcbc93392ae0d8ce89e2c2b1649a820cd61c5960d79cb5ce0cccd8ac4b0606c6&'" class="h-72 md:h-80 w-auto object-contain glow-logo transform hover:scale-105 transition duration-300">
                 </div>
 
-                <!-- عنوان البطولة بـ لون نيون أخضر صافي بالكامل -->
                 <div class="py-2">
-                    <h1 class="text-4xl md:text-6xl neon-green-text leading-tight md:leading-snug pb-2">
+                    <h1 class="text-4xl md:text-6xl font-black tracking-tight text-gradient leading-tight md:leading-snug pb-2">
                         بطولة تيتانيوم لروكيت ليق
                     </h1>
                 </div>
@@ -162,36 +135,30 @@
                 </p>
             </div>
 
-            <!-- بطاقات تفاصيل البطولة مع تطبيق النيون على العناوين فقط والكلام البيضا الطبيعي تحتها -->
+            <!-- بطاقات تفاصيل البطولة متطابقة مع اللوجو -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 max-w-4xl mx-auto">
                 <div class="p-6 bg-[#070e10] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
                     <i class="fa-solid fa-users text-3xl text-emerald-400 mb-3"></i>
-                    <!-- عنوان نيون -->
-                    <h3 class="text-xl neon-green-text mb-2">نظام البطولة</h3>
-                    <!-- شرح طبيعي باللون الأبيض -->
-                    <p class="normal-white-text text-sm">دو (2v2) - فرق ثنائية متكاملة</p>
+                    <h3 class="text-lg font-bold text-gray-200 mb-1">نظام البطولة</h3>
+                    <p class="text-gray-400 text-sm">دو (2v2) - فرق ثنائية متكاملة</p>
                 </div>
                 <div class="p-6 bg-[#070e10] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
                     <i class="fa-solid fa-award text-3xl text-yellow-500 mb-3"></i>
-                    <!-- عنوان نيون -->
-                    <h3 class="text-xl neon-green-text mb-2">رتبة مميزة (رول)</h3>
-                    <!-- شرح طبيعي باللون الأبيض -->
-                    <p class="normal-white-text text-sm">يحصل الفائز بالبطولة على رول خاص وحصري داخل سيرفر الديسكورد</p>
+                    <h3 class="text-lg font-bold text-gray-200 mb-1">رتبة مميزة (رول)</h3>
+                    <p class="text-gray-400 text-sm">يحصل الفائز بالبطولة على رول خاص وحصري داخل سيرفر الديسكورد</p>
                 </div>
                 <div class="p-6 bg-[#070e10] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
                     <i class="fa-solid fa-gamepad text-3xl text-emerald-400 mb-3"></i>
-                    <!-- عنوان نيون -->
-                    <h3 class="text-xl neon-green-text mb-2">المنصات المدعومة</h3>
-                    <!-- شرح طبيعي باللون الأبيض -->
-                    <p class="normal-white-text text-sm">جميع المنصات (بلايستيشن / اكس بوكس / بي سي)</p>
+                    <h3 class="text-lg font-bold text-gray-200 mb-1">المنصات المدعومة</h3>
+                    <p class="text-gray-400 text-sm">جميع المنصات (بلايستيشن / اكس بوكس / بي سي)</p>
                 </div>
             </div>
 
             <div class="pt-6 flex flex-col sm:flex-row justify-center gap-4">
-                <button onclick="switchTab('register')" class="px-8 py-4 bg-gradient-to-r from-[#00FF66] to-emerald-600 rounded-xl font-bold text-lg text-black hover:opacity-90 transition transform hover:scale-105 glow-green">
+                <button onclick="switchTab('register')" class="px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl font-bold text-lg hover:from-emerald-500 hover:to-emerald-600 text-white transition transform hover:scale-105 glow-green">
                     سجل فريقك الآن <i class="fa-solid fa-arrow-left mr-2"></i>
                 </button>
-                <button onclick="switchTab('teams')" class="px-8 py-4 bg-[#070e10] border border-emerald-900 text-[#00FF66] rounded-xl font-bold text-lg hover:bg-emerald-950/20 transition">
+                <button onclick="switchTab('teams')" class="px-8 py-4 bg-[#070e10] border border-emerald-900 text-emerald-400 rounded-xl font-bold text-lg hover:bg-emerald-950/20 transition">
                     استعراض الفرق المسجلة
                 </button>
             </div>
@@ -254,7 +221,7 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">آيدي اللعبة (ID)</label>
-                                <!-- مربع كتابة الايدي متناسق بالكامل بلون التركيز الزمردي الأخضر -->
+                                <!-- تعديل إطار التركيز هنا ليصبح أخضر زمردي متناسق (focus:border-emerald-500) -->
                                 <input type="text" id="p2Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white placeholder-gray-600">
                             </div>
                         </div>
@@ -280,6 +247,7 @@
                 <p class="text-gray-400 text-sm">يمكن للإدارة فقط تعديل أو حذف أي فريق عبر رمز المرور الخاص بها.</p>
             </div>
 
+            <!-- جدول استعراض الفرق مع خيارات الإدارة -->
             <div class="bg-[#070e10] border border-emerald-950 rounded-2xl overflow-hidden shadow-xl">
                 <div class="overflow-x-auto">
                     <table class="w-full text-right border-collapse">
@@ -310,18 +278,18 @@
             </div>
 
             <div class="space-y-4">
-                <!-- القانون الأول -->
+                <!-- القانون الأول (وميض أحمر مع شعار الحظر) -->
                 <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-red-500/30 transition text-right">
                     <div class="bg-red-500/10 text-red-500 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] border border-red-500/30 animate-red-pulse">
                         <i class="fa-solid fa-ban text-2xl"></i>
                     </div>
                     <div class="flex-grow">
                         <h3 class="text-lg font-bold text-white mb-1">قانون منع تبادل الحسابات أو اللعب عن الغير (No Ringing / Account Sharing)</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-red-500">شرح القانون:</strong> يُمنع منعاً باتاً أن يقوم أي لاعب بالدخول واللعب باستخدام حساب لاعب آخر مسجل في البطولة.</p>
+                        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-red-500">شرح القانون:</strong> يُمنع منعاً باتاً أن يقوم أي لاعب بالدخول واللعب باستخدام حساب لاعب آخر مسجل في البطولة (سواء كان زميله في الفريق أو لاعباً من خارج البطولة).</p>
                     </div>
                 </div>
 
-                <!-- القانون الثاني -->
+                <!-- القانون الثاني (وميض أحمر مع شعار انقطاع الاتصال متموضع في اليمين تماماً) -->
                 <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-red-500/30 transition text-right">
                     <div class="bg-red-500/10 text-red-500 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] border border-red-500/30 animate-red-pulse">
                         <div class="relative">
@@ -335,13 +303,13 @@
                         <h3 class="text-lg font-bold text-white mb-1">بروتوكول انقطاع الاتصال والمشاكل التقنية (Disconnect Protocol)</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-2"><strong class="text-red-500">شرح القانون:</strong> إذا واجه أحد اللاعبين مشكلة تقنية أو انقطع اتصاله بالإنترنت أثناء جولة رسمية، يتم التعامل مع الأمر وفق شروط دقيقة:</p>
                         <ul class="list-disc list-inside text-gray-400 text-sm leading-relaxed space-y-1 pr-2">
-                            <li>إذا حدث الانقطاع في أول 30 ثانية من بداية المباراة وقبل تسجيل أي هدف من الطرفين، يُسمح بإعادة المباراة.</li>
-                            <li>إذا حدث الانقطاع بعد مرور أول 30 ثانية أو بعد تسجيل هدف، يستمر اللعب كالمعتاد ولا تُعاد الجولة تلقائياً إلا بقرار منظم السيرفر.</li>
+                            <li>إذا حدث الانقطاع في أول 30 ثانية من بداية المباراة وقبل تسجيل أي هدف من الطرفين، يُسمح بإيقاف اللعب وإعادة المباراة (Restart).</li>
+                            <li>إذا حدث الانقطاع بعد مرور أول 30 ثانية أو بعد تسجيل أي هدف، يستمر اللعب كالمعتاد (حتى لو كان الفريق ناقصاً) إلى أن تسنح فرصة للمنظمين بالتدخل أو انتهاء المباراة، ولا تُعاد الجولة تلقائياً إلا في حالات استثنائية جداً يقررها حكم المباراة.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- القانون الثالث -->
+                <!-- القانون الثالث (وميض أزرق ديسكورد مع شعار الديسكورد) -->
                 <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-indigo-500/30 transition text-right">
                     <div class="bg-indigo-500/10 text-indigo-400 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] border border-indigo-500/30 animate-discord-pulse">
                         <i class="fa-brands fa-discord text-2xl"></i>
@@ -349,7 +317,7 @@
                     <div class="flex-grow">
                         <h3 class="text-lg font-bold text-white mb-1">الاستفسارات والتذاكر في الديسكورد</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">لأي استفسار، أو تقديم شكوى يرجى فتح تذكرة دعم فني مباشرة في الديسكورد وسيتعامل معها المنظمون فوراً.</p>
-                        <a href="https://discord.gg/t1t" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#00FF66] to-emerald-600 hover:opacity-90 text-black rounded-lg text-sm font-bold transition shadow-lg">
+                        <a href="https://discord.gg/t1t" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white rounded-lg text-sm font-bold transition shadow-lg">
                             <i class="fa-brands fa-discord"></i> توجه للديسكورد الآن
                         </a>
                     </div>
@@ -361,11 +329,12 @@
 
     <!-- تذييل الصفحة (Footer) -->
     <footer class="border-t border-emerald-950 bg-[#070e10] py-6 text-center text-sm text-gray-500">
-        <p>&copy; جميع الحقوق محفوظة لـ سيرفر تيتانيوم <span class="text-[#00FF66] font-semibold">Titanium</span>.</p>
+        <p>&copy; جميع الحقوق محفوظة لـ سيرفر تيتانيوم <span class="text-emerald-500 font-semibold">Titanium</span>.</p>
     </footer>
 
-    <!-- جافاسكريبت للتحكم بالصفحات والربط السحابي -->
+    <!-- جافاسكريبت للتحكم بالصفحات والربط مع Firebase السحابي المباشر -->
     <script>
+        // دالة تبديل الصفحات داخل الموقع
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.add('hidden');
@@ -378,17 +347,26 @@
             document.getElementById(`btn-${tabId}`).className = 'nav-btn px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold transition';
         }
 
+        // ==========================================
+        // إعدادات الـ Firebase وقناة الاتصال الحية
+        // ==========================================
         const firebaseConfig = {
             databaseURL: "https://roucket-30506-default-rtdb.firebaseio.com/"
         };
 
+        // تهيئة الـ Firebase في الموقع
         if (!firebase.apps.length) {
             firebase.initializeApp(firebaseConfig);
         }
         const database = firebase.database();
         const MAX_PLAYERS = 64; 
-        const ADMIN_PIN = "0595"; 
 
+        // ==========================================
+        // إعدادات الإدارة الآمنة (Admin Setup)
+        // ==========================================
+        const ADMIN_PIN = "0595"; // رمز مرور الإدارة 
+
+        // الاستماع المباشر وتحديث الجدول والعدادات بشكل ديناميكي فوري
         database.ref('teams').on('value', (snapshot) => {
             const data = snapshot.val();
             const teamsList = [];
@@ -400,13 +378,15 @@
                         id: key,
                         ...data[key]
                     });
-                    totalPlayersCount += 2;
+                    totalPlayersCount += 2; // كل فريق فيه لاعبين
                 });
             }
 
+            // تحديث العدادات على الواجهة
             const remaining = MAX_PLAYERS - totalPlayersCount;
             document.getElementById('registeredCount').innerText = totalPlayersCount;
             
+            // تحديث الشريط العلوي الحي فوراً وبشكل ديناميكي!
             const remainingEl = document.getElementById('remainingCount');
             if (remainingEl) {
                 remainingEl.innerText = remaining >= 0 ? remaining : 0;
@@ -454,6 +434,7 @@
             });
         });
 
+        // دالة معالجة فورم التسجيل السحابي
         function handleRegistration(e) {
             e.preventDefault();
 
@@ -487,21 +468,27 @@
             });
         }
 
+        // ==========================================
+        // وظائف الإدارة (حذف وتعديل عبر الرمز السري)
+        // ==========================================
+        
+        // 1. وظيفة حذف فريق
         function deleteTeam(teamId) {
-            const pin = prompt("0595:");
+            const pin = prompt("هذا الإجراء مخصص للإدارة فقط.\nالرجاء إدخال رمز مرور الإدارة لإتمام عملية الحذف:");
             if (pin === null) return; 
             
             if (pin === ADMIN_PIN) {
                 if (confirm("هل أنت متأكد من رغبتك في حذف هذا الفريق نهائياً من البطولة؟")) {
                     database.ref('teams/' + teamId).remove()
-                        .then(() => alert("تم حذف الفريق بنجاح."))
+                        .then(() => alert("تم حذف الفريق من السيرفر وقاعدة البيانات بنجاح."))
                         .catch(err => alert("فشل الحذف: " + err.message));
                 }
             } else {
-                alert("رمز المرور خاطئ!");
+                alert("رمز المرور خاطئ! لا تملك صلاحية الحذف.");
             }
         }
 
+        // 2. وظيفة تعديل بيانات فريق
         function editTeam(teamId) {
             const pin = prompt("هذا الإجراء مخصص للإدارة فقط.\nالرجاء إدخال رمز مرور الإدارة لإتمام عملية التعديل:");
             if (pin === null) return;
@@ -533,10 +520,11 @@
                     }
                 });
             } else {
-                alert("رمز المرور خاطئ!");
+                alert("رمز المرور خاطئ! لا تملك صلاحية التعديل.");
             }
         }
 
+        // دالة حماية الموقع من الثغرات
         function escapeHtml(text) {
             const map = {
                 '&': '&amp;',
