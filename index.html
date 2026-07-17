@@ -44,6 +44,20 @@
             background: #10b981;
             border-radius: 4px;
         }
+        /* وميض أحمر مخصص لقانون انقطاع الاتصال */
+        @keyframes redPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 25px rgba(239, 68, 68, 0.8);
+            }
+        }
+        .animate-red-pulse {
+            animation: redPulse 2s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="text-gray-100 min-h-screen flex flex-col justify-between">
@@ -191,7 +205,7 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">آيدي اللعبة (ID)</label>
-                                <input type="text" id="p2Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-yellow-500 text-white placeholder-gray-600">
+                                <input type="text" id="p2Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#030708] border border-yellow-500 rounded-lg focus:outline-none focus:border-yellow-500 text-white placeholder-gray-600">
                             </div>
                         </div>
                     </div>
@@ -247,7 +261,7 @@
             </div>
 
             <div class="space-y-4">
-                <!-- القانون الأول (الشعارات باليمين) -->
+                <!-- القانون الأول -->
                 <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition text-right">
                     <div class="bg-emerald-500/10 text-emerald-400 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] shadow-[0_0_15px_rgba(16,185,129,0.05)]">
                         <i class="fa-solid fa-ban text-2xl"></i>
@@ -258,10 +272,15 @@
                     </div>
                 </div>
 
-                <!-- القانون الثاني (تم تعديل الشعار واللون إلى الأحمر المتوهج مع أيقونة انقطاع الاتصال) -->
-                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-red-500/20 transition text-right">
-                    <div class="bg-red-500/10 text-red-500 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] shadow-[0_0_15px_rgba(239,68,68,0.25)] border border-red-500/20 animate-pulse">
-                        <i class="fa-solid fa-wifi-slash text-2xl"></i>
+                <!-- القانون الثاني (شعار وميض أحمر يعبر عن انقطاع الاتصال متموضع باليمين تماماً) -->
+                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-red-500/30 transition text-right">
+                    <div class="bg-red-500/10 text-red-500 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] border border-red-500/30 animate-red-pulse">
+                        <div class="relative">
+                            <i class="fa-solid fa-wifi text-2xl"></i>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fa-solid fa-slash text-xs text-red-500 transform rotate-12 scale-150"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="flex-grow">
                         <h3 class="text-lg font-bold text-white mb-1">بروتوكول انقطاع الاتصال والمشاكل التقنية (Disconnect Protocol)</h3>
@@ -273,7 +292,7 @@
                     </div>
                 </div>
 
-                <!-- القانون الثالث والدعم (الشعارات باليمين) -->
+                <!-- القانون الثالث والدعم -->
                 <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition text-right">
                     <div class="bg-indigo-500/10 text-indigo-400 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] shadow-[0_0_15px_rgba(99,102,241,0.05)]">
                         <i class="fa-brands fa-discord text-2xl"></i>
