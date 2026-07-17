@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطولة روكيت ليق | سيرفر تيتانيوم</title>
+    <!-- Tailwind CSS لجمالية التصميم وسرعة الاستجابة -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0b0f19;
+        }
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen flex flex-col justify-between">
+
+    <!-- شريط التنقل (Navbar) -->
+    <header class="border-b border-gray-800 bg-[#0f172a] sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2 rounded-lg text-white font-bold tracking-wider text-xl glow-effect">
+                    TITANIUM
+                </div>
+                <span class="text-lg font-bold text-gray-300">| بطولة الدو (2v2)</span>
+            </div>
+            <nav class="flex gap-2">
+                <button onclick="switchTab('home')" id="btn-home" class="nav-btn px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold transition">الرئيسية</button>
+                <button onclick="switchTab('register')" id="btn-register" class="nav-btn px-4 py-2 rounded-lg hover:bg-gray-800 text-gray-300 transition">التسجيل</button>
+                <button onclick="switchTab('rules')" id="btn-rules" class="nav-btn px-4 py-2 rounded-lg hover:bg-gray-800 text-gray-300 transition">القوانين</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي (Main Content) -->
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full">
+
+        <!-- 1. الصفحة الرئيسية (Home Page) -->
+        <section id="page-home" class="tab-content space-y-8 text-center">
+            <div class="space-y-4">
+                <span class="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold border border-blue-500/20">البطولة الكبرى قادمة</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                    بطولة تيتانيوم لروكيت ليق
+                </h1>
+                <p class="text-gray-400 max-w-xl mx-auto text-lg">
+                    استعدوا للإثارة والتحقوا بأقوى منافسات الدو (2v2) على مستوى السيرفر. أثبتوا مهاراتكم وتوجوا باللقب!
+                </p>
+            </div>
+
+            <!-- بطاقات تفاصيل البطولة -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+                <div class="p-6 bg-[#111827] rounded-xl border border-gray-800 hover:border-blue-500/50 transition">
+                    <i class="fa-solid fa-users text-3xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">النظام</h3>
+                    <p class="text-gray-400">دو (2v2) - فرق ثنائية متكاملة</p>
+                </div>
+                <div class="p-6 bg-[#111827] rounded-xl border border-gray-800 hover:border-blue-500/50 transition">
+                    <i class="fa-solid fa-trophy text-3xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">الجوائز واللقب</h3>
+                    <p class="text-gray-400">تُحدد جوائز السيرفر للأبطال لاحقاً</p>
+                </div>
+                <div class="p-6 bg-[#111827] rounded-xl border border-gray-800 hover:border-blue-500/50 transition">
+                    <i class="fa-solid fa-gamepad text-3xl text-purple-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">المنصة</h3>
+                    <p class="text-gray-400">جميع المنصات (Cross-play)</p>
+                </div>
+            </div>
+
+            <div class="pt-6">
+                <button onclick="switchTab('register')" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl font-bold text-lg hover:from-blue-500 hover:to-indigo-500 transition transform hover:scale-105 glow-effect">
+                    سجل فريقك الآن <i class="fa-solid fa-arrow-left mr-2"></i>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- 2. صفحة التسجيل (Registration Page) -->
+        <section id="page-register" class="tab-content hidden space-y-6">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <h2 class="text-3xl font-extrabold text-white">تسجيل الفريق (2v2)</h2>
+                <p class="text-gray-400 text-sm">يرجى ملء البيانات بدقة. الحد الأقصى للمشاركين في قاعدة البيانات المؤقتة هو 64 لاعباً (32 فريقاً).</p>
+            </div>
+
+            <div class="bg-[#111827] p-8 rounded-2xl border border-gray-800 max-w-2xl mx-auto shadow-2xl">
+                <form id="registrationForm" onsubmit="handleRegistration(event)" class="space-y-6">
+                    
+                    <!-- بيانات اللاعب الأول -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-bold text-blue-400 border-b border-gray-800 pb-2"><i class="fa-solid fa-user-gear ml-2"></i>اللاعب الأول (قائد الفريق)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-400 mb-2">حساب الديسكورد (Discord Username)</label>
+                                <input type="text" id="p1Discord" required placeholder="مثال: user_one" class="w-full px-4 py-3 bg-[#0f172a] border border-gray-800 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-600">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-400 mb-2">ايدي اللعبة (Epic/PSN/Xbox ID)</label>
+                                <input type="text" id="p1Epic" required placeholder="مثال: EpicID_1" class="w-full px-4 py-3 bg-[#0f172a] border border-gray-800 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-600">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- بيانات اللاعب الثاني -->
+                    <div class="space-y-4 pt-4">
+                        <h3 class="text-lg font-bold text-indigo-400 border-b border-gray-800 pb-2"><i class="fa-solid fa-user ml-2"></i>اللاعب الثاني</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-400 mb-2">حساب الديسكورد (Discord Username)</label>
+                                <input type="text" id="p2Discord" required placeholder="مثال: user_two" class="w-full px-4 py-3 bg-[#0f172a] border border-gray-800 rounded-lg focus:outline-none focus:border-indigo-500 text-white placeholder-gray-600">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-400 mb-2">ايدي اللعبة (Epic/PSN/Xbox ID)</label>
+                                <input type="text" id="p2Epic" required placeholder="مثال: EpicID_2" class="w-full px-4 py-3 bg-[#0f172a] border border-gray-800 rounded-lg focus:outline-none focus:border-indigo-500 text-white placeholder-gray-600">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition duration-200">
+                        تأكيد وإرسال التسجيل
+                    </button>
+                </form>
+
+                <!-- قسم إحصائيات قاعدة البيانات (الحد الأقصى 64 لاعب) -->
+                <div class="mt-8 pt-6 border-t border-gray-800 flex justify-between items-center text-sm">
+                    <span class="text-gray-400">حالة المقاعد المحجوزة:</span>
+                    <span class="font-bold text-blue-400"><span id="registeredCount">0</span> / 64 لاعب</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3. صفحة القوانين (Rules Page) -->
+        <section id="page-rules" class="tab-content hidden space-y-8 max-w-2xl mx-auto">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl font-extrabold text-white">قوانين وشروط البطولة</h2>
+                <p class="text-gray-400 text-sm">يرجى الالتزام التام بالقوانين لتجنب الاستبعاد الفوري</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- القانون الأول -->
+                <div class="flex gap-4 p-5 bg-[#111827] rounded-xl border border-gray-800 hover:border-red-500/35 transition">
+                    <div class="bg-red-500/10 text-red-400 p-3 rounded-lg h-fit">
+                        <i class="fa-solid fa-ban text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">عدم التفجير (No Demolition)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">يُمنع منعاً باتاً تفجير سيارات الخصم عمداً أثناء اللعب. أي تفجير متعمد قد يعرض الفريق لعقوبات أو خسارة الجولة.</p>
+                    </div>
+                </div>
+
+                <!-- القانون الثاني -->
+                <div class="flex gap-4 p-5 bg-[#111827] rounded-xl border border-gray-800 hover:border-blue-500/35 transition">
+                    <div class="bg-blue-500/10 text-blue-400 p-3 rounded-lg h-fit">
+                        <i class="fa-solid fa-flag-checkered text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">نظام الحسم (3 - 0)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">تنتهي المباراة وتُحسم النتيجة فوراً بمجرد وصول أي فريق لـ 3 انتصارات مقابل 0 للخصم.</p>
+                    </div>
+                </div>
+
+                <!-- القانون الثالث والمساعدة -->
+                <div class="flex gap-4 p-5 bg-[#111827] rounded-xl border border-gray-800 hover:border-indigo-500/35 transition">
+                    <div class="bg-indigo-500/10 text-indigo-400 p-3 rounded-lg h-fit">
+                        <i class="fa-brands fa-discord text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">الاستفسارات والدعم</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">لأي استفسار، اعتراض، أو مشكلة واجهتكم أثناء البطولة، يرجى التوجه فوراً لفتح تذكرة في سيرفر الديسكورد.</p>
+                        <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-lg text-sm font-bold transition">
+                            <i class="fa-brands fa-discord"></i> دخول سيرفر تيتانيوم
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- تذييل الصفحة (Footer) -->
+    <footer class="border-t border-gray-800 bg-[#0f172a] py-6 text-center text-sm text-gray-500">
+        <p>&copy; 2026 سيرفر تيتانيوم - جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- JavaScript لإدارة الصفحات وقاعدة البيانات المحلية (Local Storage) -->
+    <script>
+        // دالة التنقل بين الصفحات
+        function switchTab(tabId) {
+            // إخفاء كل الصفحات
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            // إظهار الصفحة المحددة
+            document.getElementById(`page-${tabId}`).classList.remove('hidden');
+
+            // تغيير مظهر الأزرار النشطة
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = 'nav-btn px-4 py-2 rounded-lg hover:bg-gray-800 text-gray-300 transition';
+            });
+            document.getElementById(`btn-${tabId}`).className = 'nav-btn px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold transition';
+        }
+
+        // محاكاة قاعدة بيانات محلية بحد أقصى 64 مشارك (أي 32 فريق)
+        const MAX_PLAYERS = 64;
+
+        function getRegisteredCount() {
+            const players = JSON.parse(localStorage.getItem('tournament_players')) || [];
+            return players.length;
+        }
+
+        function updateUIStats() {
+            const count = getRegisteredCount();
+            document.getElementById('registeredCount').innerText = count;
+        }
+
+        function handleRegistration(e) {
+            e.preventDefault();
+
+            let players = JSON.parse(localStorage.getItem('tournament_players')) || [];
+
+            // التحقق من المساحة المتبقية بقاعدة البيانات
+            if (players.length >= MAX_PLAYERS) {
+                alert('عذراً! تم اكتمال الحد الأقصى للمسجلين في البطولة وهو 64 لاعباً.');
+                return;
+            }
+            if (players.length + 2 > MAX_PLAYERS) {
+                alert('عذراً! لا يوجد سوى مقعد واحد شاغر، ونظام البطولة يتطلب تسجيل لاعبين اثنين معاً.');
+                return;
+            }
+
+            // سحب البيانات من النموذج
+            const p1 = {
+                discord: document.getElementById('p1Discord').value.trim(),
+                epic: document.getElementById('p1Epic').value.trim()
+            };
+            const p2 = {
+                discord: document.getElementById('p2Discord').value.trim(),
+                epic: document.getElementById('p2Epic').value.trim()
+            };
+
+            // إضافة اللاعبين إلى قاعدة البيانات المحلية
+            players.push(p1);
+            players.push(p2);
+
+            localStorage.setItem('tournament_players', JSON.stringify(players));
+            
+            // إعادة ضبط النموذج وتحديث الواجهة
+            document.getElementById('registrationForm').reset();
+            updateUIStats();
+
+            alert('تم تسجيل فريقك بنجاح في قاعدة البيانات المؤقتة الخاصة بالمتصفح! بالتوفيق.');
+        }
+
+        // تهيئة العداد عند تحميل الصفحة
+        window.onload = function() {
+            updateUIStats();
+        };
+    </script>
+</body>
+</html>
