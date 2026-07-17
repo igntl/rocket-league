@@ -44,7 +44,8 @@
             background: #10b981;
             border-radius: 4px;
         }
-        /* وميض أحمر مخصص لقانون انقطاع الاتصال */
+        
+        /* أنيميشن الوميض الأحمر */
         @keyframes redPulse {
             0%, 100% {
                 transform: scale(1);
@@ -57,6 +58,21 @@
         }
         .animate-red-pulse {
             animation: redPulse 2s infinite ease-in-out;
+        }
+
+        /* أنيميشن الوميض الأزرق/البنفسجي الخاص بالديسكورد */
+        @keyframes discordPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 25px rgba(99, 102, 241, 0.8);
+            }
+        }
+        .animate-discord-pulse {
+            animation: discordPulse 2.5s infinite ease-in-out;
         }
     </style>
 </head>
@@ -188,11 +204,11 @@
 
                     <!-- بيانات اللاعب الثاني -->
                     <div class="space-y-4 pt-4">
-                        <h3 class="text-md font-bold text-yellow-500 border-b border-emerald-950 pb-2"><i class="fa-solid fa-circle-user ml-2"></i>اللاعب الثاني</h3>
+                        <h3 class="text-md font-bold text-emerald-400 border-b border-emerald-950 pb-2"><i class="fa-solid fa-circle-user ml-2"></i>اللاعب الثاني</h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="md:col-span-1">
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">المنصة</label>
-                                <select id="p2Platform" required class="w-full px-3 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-yellow-500 text-white">
+                                <select id="p2Platform" required class="w-full px-3 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white">
                                     <option value="Epic Games">Epic Games</option>
                                     <option value="PlayStation">PlayStation</option>
                                     <option value="Xbox">Xbox</option>
@@ -201,11 +217,12 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">حساب الديسكورد</label>
-                                <input type="text" id="p2Discord" required placeholder="مثال: user_two" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-yellow-500 text-white placeholder-gray-600">
+                                <input type="text" id="p2Discord" required placeholder="مثال: user_two" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white placeholder-gray-600">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">آيدي اللعبة (ID)</label>
-                                <input type="text" id="p2Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#030708] border border-yellow-500 rounded-lg focus:outline-none focus:border-yellow-500 text-white placeholder-gray-600">
+                                <!-- تعديل إطار التركيز هنا ليصبح أخضر زمردي متناسق (focus:border-emerald-500) -->
+                                <input type="text" id="p2Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white placeholder-gray-600">
                             </div>
                         </div>
                     </div>
@@ -261,18 +278,18 @@
             </div>
 
             <div class="space-y-4">
-                <!-- القانون الأول -->
-                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition text-right">
-                    <div class="bg-emerald-500/10 text-emerald-400 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] shadow-[0_0_15px_rgba(16,185,129,0.05)]">
+                <!-- القانون الأول (وميض أحمر مع شعار الحظر) -->
+                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-red-500/30 transition text-right">
+                    <div class="bg-red-500/10 text-red-500 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] border border-red-500/30 animate-red-pulse">
                         <i class="fa-solid fa-ban text-2xl"></i>
                     </div>
                     <div class="flex-grow">
                         <h3 class="text-lg font-bold text-white mb-1">قانون منع تبادل الحسابات أو اللعب عن الغير (No Ringing / Account Sharing)</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-emerald-400">شرح القانون:</strong> يُمنع منعاً باتاً أن يقوم أي لاعب بالدخول واللعب باستخدام حساب لاعب آخر مسجل في البطولة (سواء كان زميله في الفريق أو لاعباً من خارج البطولة).</p>
+                        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-red-500">شرح القانون:</strong> يُمنع منعاً باتاً أن يقوم أي لاعب بالدخول واللعب باستخدام حساب لاعب آخر مسجل في البطولة (سواء كان زميله في الفريق أو لاعباً من خارج البطولة).</p>
                     </div>
                 </div>
 
-                <!-- القانون الثاني (شعار وميض أحمر يعبر عن انقطاع الاتصال متموضع باليمين تماماً) -->
+                <!-- القانون الثاني (وميض أحمر مع شعار انقطاع الاتصال متموضع في اليمين تماماً) -->
                 <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-red-500/30 transition text-right">
                     <div class="bg-red-500/10 text-red-500 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] border border-red-500/30 animate-red-pulse">
                         <div class="relative">
@@ -292,15 +309,15 @@
                     </div>
                 </div>
 
-                <!-- القانون الثالث والدعم -->
-                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition text-right">
-                    <div class="bg-indigo-500/10 text-indigo-400 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] shadow-[0_0_15px_rgba(99,102,241,0.05)]">
+                <!-- القانون الثالث (وميض أزرق ديسكورد مع شعار الديسكورد) -->
+                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-indigo-500/30 transition text-right">
+                    <div class="bg-indigo-500/10 text-indigo-400 p-3.5 rounded-xl h-fit flex items-center justify-center min-w-[56px] border border-indigo-500/30 animate-discord-pulse">
                         <i class="fa-brands fa-discord text-2xl"></i>
                     </div>
                     <div class="flex-grow">
                         <h3 class="text-lg font-bold text-white mb-1">الاستفسارات والتذاكر في الديسكورد</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">لأي استفسار، أو تقديم شكوى يرجى فتح تذكرة دعم فني مباشرة في الديسكورد وسيتعامل معها المنظمون فوراً.</p>
-                        <a href="https://discord.gg/t1t" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white rounded-lg text-sm font-bold transition">
+                        <a href="https://discord.gg/t1t" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white rounded-lg text-sm font-bold transition shadow-lg">
                             <i class="fa-brands fa-discord"></i> توجه للديسكورد الآن
                         </a>
                     </div>
