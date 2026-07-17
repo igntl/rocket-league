@@ -52,14 +52,13 @@
     <header class="border-b border-emerald-950 bg-[#070e10] sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-3 grid grid-cols-1 md:grid-cols-3 items-center gap-4">
             
-            <!-- 1. اليمين: اللوجو بجانب النصوص (تم إعادته يمين الشاشة كالسابق) -->
+            <!-- 1. اليمين: اللوجو وبجانبه كلمة Titanium فقط -->
             <div class="flex items-center gap-3 justify-center md:justify-start">
                 <img src="logo_clean.png" alt="Titanium Logo" onerror="this.src='https://cdn.discordapp.com/attachments/1525890867452186795/1527534321903210677/Screenshot_48-Photoroom.png?ex=6a5b02b2&is=6a59b132&hm=bcbc93392ae0d8ce89e2c2b1649a820cd61c5960d79cb5ce0cccd8ac4b0606c6&'" class="h-12 w-auto object-contain glow-logo">
                 <div class="text-right">
                     <div class="font-extrabold tracking-wider text-xl text-emerald-400 leading-none">
                         TITANIUM
                     </div>
-                    <span class="text-[10px] text-emerald-500/80 font-bold">بطولة الدو الثنائية (2v2)</span>
                 </div>
             </div>
             
@@ -256,14 +255,14 @@
                     <div>
                         <h3 class="text-lg font-bold text-white mb-1">قانون منع تبادل الحسابات أو اللعب عن الغير (No Ringing / Account Sharing)</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-2"><strong class="text-emerald-400">شرح القانون:</strong> يُمنع منعاً باتاً أن يقوم أي لاعب بالدخول واللعب باستخدام حساب لاعب آخر مسجل في البطولة (سواء كان زميله في الفريق أو لاعباً من خارج البطولة).</p>
-                        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-yellow-500">الهدف والعقوبة:</strong> حماية عدالة المنافسة وتكافؤ الفرص. عقوبة هذا الانتهاك قاسية جداً في RLCS، وتصل إلى الحرمان التام والشامل (Ban) للاعب المخالف وصاحب الحساب من المشاركة في أي بطولة رسمية تنظمها Psyonix لفترات طويلة قد تمتد لسنوات.</p>
+                        <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-yellow-500">\</strong> </p>
                     </div>
                 </div>
 
-                <!-- القانون الثاني -->
+                <!-- القانون الثاني (تم تعديل الأيقونة هنا لأيقونة انقطاع اتصال) -->
                 <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition">
                     <div class="bg-yellow-500/10 text-yellow-400 p-3.5 rounded-xl h-fit">
-                        <i class="fa-solid fa-flag-checkered text-2xl"></i>
+                        <i class="fa-solid fa-wifi-slash text-2xl"></i>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-white mb-1">بروتوكول انقطاع الاتصال والمشاكل التقنية (Disconnect Protocol)</h3>
@@ -330,7 +329,7 @@
         // ==========================================
         // إعدادات الإدارة الآمنة (Admin Setup)
         // ==========================================
-        const ADMIN_PIN = "1234"; // رمز مرور الإدارة 
+        const ADMIN_PIN = "0595"; // رمز مرور الإدارة 
 
         // الاستماع المباشر وتحديث الجدول والعدادات بشكل ديناميكي فوري
         database.ref('teams').on('value', (snapshot) => {
