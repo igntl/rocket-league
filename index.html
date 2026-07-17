@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بطولة روكيت ليق | سيرفر تيتانيوم</title>
+    <title>بطولة روكيت ليق | سيرفر تيتانيوم يلا يالوولاااد</title>
     <!-- Tailwind CSS للتنسيق الفخم المتجاوب -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome للأيقونات -->
@@ -17,24 +17,28 @@
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #050a0e; /* أسود زمردي غامق جداً متطابق مع خلفية اللوجو */
+            background-color: #030708; /* خلفية سوداء زمردية فائقة العمق مستوحاة من خلفية اللوجو المرفق */
         }
-        /* تأثيرات الوهج المستوحاة من لوجو تيتانيوم الذهبي والأخضر الزمردي */
+        /* تأثير وهج خلفية اللوجو باللونين الزمردي والذهبي ليعطي عمقاً معدنياً */
+        .glow-logo {
+            filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.25)) drop-shadow(0 0 40px rgba(234, 179, 8, 0.15));
+        }
         .glow-green {
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
         }
+        /* تدرج اللوجو الذهبي الزمردي الفخم */
         .text-gradient {
-            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+            background: linear-gradient(135deg, #10b981 0%, #34d399 40%, #fbbf24 80%, #eab308 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block; /* حل مشكلة تداخل الحواف في تدرج الألوان */
+            display: inline-block;
         }
-        /* إخفاء شريط التمرير الافتراضي وتجميله */
+        /* تجميل شريط التمرير */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #050a0e;
+            background: #030708;
         }
         ::-webkit-scrollbar-thumb {
             background: #10b981;
@@ -45,19 +49,19 @@
 <body class="text-gray-100 min-h-screen flex flex-col justify-between">
 
     <!-- شريط التنقل (Navbar) -->
-    <header class="border-b border-emerald-950 bg-[#091117] sticky top-0 z-50">
+    <header class="border-b border-emerald-950 bg-[#070e10] sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
-                <!-- استخدام اللوجو المفرغ المحسن -->
-                <img src="logo_clean.png" alt="Titanium Logo" onerror="this.src='https://raw.githubusercontent.com/39fstudio/assets/main/logo_clean.png'" class="h-12 w-auto object-contain">
+                <!-- اللوجو مدمج بالشريط العلوي -->
+                <img src="logo_clean.png" alt="Titanium Logo" onerror="this.src='https://raw.githubusercontent.com/39fstudio/assets/main/logo_clean.png'" class="h-12 w-auto object-contain glow-logo">
                 <div>
                     <div class="font-extrabold tracking-wider text-xl text-emerald-400">
-                        TITANIUM <span class="text-amber-400"></span>
+                        TITANIUM <span class="text-yellow-500">STUDIO</span>
                     </div>
-                    <span class="text-xs text-gray-400">بطولة الدو الثنائية (2v2)</span>
+                    <span class="text-xs text-emerald-500/80">بطولة الدو الثنائية (2v2)</span>
                 </div>
             </div>
-            <nav class="flex gap-1.5 bg-[#050a0e] p-1 rounded-xl border border-emerald-950/60">
+            <nav class="flex gap-1.5 bg-[#030708] p-1 rounded-xl border border-emerald-950/60">
                 <button onclick="switchTab('home')" id="btn-home" class="nav-btn px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold transition">الرئيسية</button>
                 <button onclick="switchTab('register')" id="btn-register" class="nav-btn px-4 py-2 rounded-lg hover:bg-emerald-950/40 text-gray-300 transition">التسجيل</button>
                 <button onclick="switchTab('teams')" id="btn-teams" class="nav-btn px-4 py-2 rounded-lg hover:bg-emerald-950/40 text-gray-300 transition">المسجلين</button>
@@ -72,39 +76,38 @@
         <!-- 1. الصفحة الرئيسية (Home Page) -->
         <section id="page-home" class="tab-content space-y-10 text-center">
             <div class="space-y-4">
+                <!-- عداد حي ديناميكي يتناقص تلقائياً مع كل تسجيل من الداتا بيز مباشرة -->
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-semibold border border-emerald-500/20">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                    التسجيل مفتوح الآن لـ 64 لاعباً فقط
+                    <span>التسجيل مفتوح الآن! متبقي <span id="remainingCount" class="text-yellow-400 font-extrabold">64</span> مقعد من أصل 64 لاعب</span>
                 </div>
                 <div class="flex justify-center py-2">
-                    <!-- لوقو السيرفر بالحجم الكبير -->
-                    <img src="logo_clean.png" alt="Titanium Logo Large" onerror="this.src='https://raw.githubusercontent.com/39fstudio/assets/main/logo_clean.png'" class="h-44 w-auto drop-shadow-[0_0_25px_rgba(16,185,129,0.3)]">
+                    <!-- عرض اللوجو المرفق بتأثير الوهج المعدني الفخم -->
+                    <img src="logo_clean.png" alt="Titanium Logo Large" onerror="this.src='https://raw.githubusercontent.com/39fstudio/assets/main/logo_clean.png'" class="h-56 w-auto glow-logo">
                 </div>
-                <!-- تعديل الارتفاع والتباعد لضمان وضوح كامل للخط دون أي قص من الأسفل -->
                 <div class="py-2">
                     <h1 class="text-4xl md:text-6xl font-black tracking-tight text-gradient leading-tight md:leading-snug pb-2">
                         بطولة تيتانيوم لروكيت ليق
                     </h1>
                 </div>
                 <p class="text-gray-400 max-w-xl mx-auto text-base md:text-lg">
-                    الساحة جاهزة والتحدي على أشده! شارك الآن مع صديقك في بطولة الدو (2v2) الاستثنائية لمنتسبي سيرفر تيتانيوم واثبتوا قوتكم.
+                    الساحة جاهزة والتحدي على أشده شارك الآن مع صديقك في بطولة الدو (2v2) الاستثنائية لمنتسبي سيرفر تيتانيوم واثبتوا قوتكم المعدنية.
                 </p>
             </div>
 
-            <!-- بطاقات تفاصيل البطولة المحدثة -->
+            <!-- بطاقات تفاصيل البطولة متطابقة مع اللوجو -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 max-w-4xl mx-auto">
-                <div class="p-6 bg-[#091117] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
+                <div class="p-6 bg-[#070e10] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
                     <i class="fa-solid fa-users text-3xl text-emerald-400 mb-3"></i>
                     <h3 class="text-lg font-bold text-gray-200 mb-1">نظام البطولة</h3>
                     <p class="text-gray-400 text-sm">دو (2v2) - فرق ثنائية متكاملة</p>
                 </div>
-                <!-- تم استبدال الجوائز المادية بالرول الخاص للفائزين -->
-                <div class="p-6 bg-[#091117] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
-                    <i class="fa-solid fa-award text-3xl text-amber-500 mb-3"></i>
+                <div class="p-6 bg-[#070e10] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
+                    <i class="fa-solid fa-award text-3xl text-yellow-500 mb-3"></i>
                     <h3 class="text-lg font-bold text-gray-200 mb-1">رتبة مميزة (رول)</h3>
                     <p class="text-gray-400 text-sm">يحصل الفائز بالبطولة على رول خاص وحصري داخل سيرفر الديسكورد</p>
                 </div>
-                <div class="p-6 bg-[#091117] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
+                <div class="p-6 bg-[#070e10] rounded-2xl border border-emerald-950 hover:border-emerald-500/30 transition">
                     <i class="fa-solid fa-gamepad text-3xl text-emerald-400 mb-3"></i>
                     <h3 class="text-lg font-bold text-gray-200 mb-1">المنصات المدعومة</h3>
                     <p class="text-gray-400 text-sm">جميع المنصات (بلايستيشن / اكس بوكس / بي سي)</p>
@@ -112,10 +115,10 @@
             </div>
 
             <div class="pt-6 flex flex-col sm:flex-row justify-center gap-4">
-                <button onclick="switchTab('register')" class="px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl font-bold text-lg hover:from-emerald-500 hover:to-teal-500 transition transform hover:scale-105 glow-green">
+                <button onclick="switchTab('register')" class="px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl font-bold text-lg hover:from-emerald-500 hover:to-emerald-600 text-white transition transform hover:scale-105 glow-green">
                     سجل فريقك الآن <i class="fa-solid fa-arrow-left mr-2"></i>
                 </button>
-                <button onclick="switchTab('teams')" class="px-8 py-4 bg-[#091117] border border-emerald-900 text-emerald-400 rounded-xl font-bold text-lg hover:bg-emerald-950/20 transition">
+                <button onclick="switchTab('teams')" class="px-8 py-4 bg-[#070e10] border border-emerald-900 text-emerald-400 rounded-xl font-bold text-lg hover:bg-emerald-950/20 transition">
                     استعراض الفرق المسجلة
                 </button>
             </div>
@@ -129,7 +132,7 @@
                 <p class="text-gray-400 text-sm">سيتم حفظ البيانات مباشرة في قاعدة البيانات السحابية لتظهر لكافة اللاعبين والإدارة فوراً.</p>
             </div>
 
-            <div class="bg-[#091117] p-6 md:p-8 rounded-2xl border border-emerald-950 max-w-2xl mx-auto shadow-2xl">
+            <div class="bg-[#070e10] p-6 md:p-8 rounded-2xl border border-emerald-950 max-w-2xl mx-auto shadow-2xl">
                 <form id="registrationForm" onsubmit="handleRegistration(event)" class="space-y-6">
                     
                     <!-- بيانات اللاعب الأول -->
@@ -141,7 +144,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="md:col-span-1">
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">المنصة</label>
-                                <select id="p1Platform" required class="w-full px-3 py-3 bg-[#050a0e] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white">
+                                <select id="p1Platform" required class="w-full px-3 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white">
                                     <option value="Epic Games">Epic Games</option>
                                     <option value="PlayStation">PlayStation</option>
                                     <option value="Xbox">Xbox</option>
@@ -150,22 +153,22 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">حساب الديسكورد</label>
-                                <input type="text" id="p1Discord" required placeholder="مثال: user_one" class="w-full px-4 py-3 bg-[#050a0e] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white placeholder-gray-600">
+                                <input type="text" id="p1Discord" required placeholder="مثال: user_one" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white placeholder-gray-600">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">آيدي اللعبة (ID)</label>
-                                <input type="text" id="p1Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#050a0e] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white placeholder-gray-600">
+                                <input type="text" id="p1Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-emerald-500 text-white placeholder-gray-600">
                             </div>
                         </div>
                     </div>
 
                     <!-- بيانات اللاعب الثاني -->
                     <div class="space-y-4 pt-4">
-                        <h3 class="text-md font-bold text-amber-500 border-b border-emerald-950 pb-2"><i class="fa-solid fa-circle-user ml-2"></i>اللاعب الثاني</h3>
+                        <h3 class="text-md font-bold text-yellow-500 border-b border-emerald-950 pb-2"><i class="fa-solid fa-circle-user ml-2"></i>اللاعب الثاني</h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="md:col-span-1">
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">المنصة</label>
-                                <select id="p2Platform" required class="w-full px-3 py-3 bg-[#050a0e] border border-emerald-950 rounded-lg focus:outline-none focus:border-amber-500 text-white">
+                                <select id="p2Platform" required class="w-full px-3 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-yellow-500 text-white">
                                     <option value="Epic Games">Epic Games</option>
                                     <option value="PlayStation">PlayStation</option>
                                     <option value="Xbox">Xbox</option>
@@ -174,17 +177,17 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">حساب الديسكورد</label>
-                                <input type="text" id="p2Discord" required placeholder="مثال: user_two" class="w-full px-4 py-3 bg-[#050a0e] border border-emerald-950 rounded-lg focus:outline-none focus:border-amber-500 text-white placeholder-gray-600">
+                                <input type="text" id="p2Discord" required placeholder="مثال: user_two" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-yellow-500 text-white placeholder-gray-600">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-2">آيدي اللعبة (ID)</label>
-                                <input type="text" id="p2Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#050a0e] border border-emerald-950 rounded-lg focus:outline-none focus:border-amber-500 text-white placeholder-gray-600">
+                                <input type="text" id="p2Epic" required placeholder="اكتب الآيدي هنا" class="w-full px-4 py-3 bg-[#030708] border border-emerald-950 rounded-lg focus:outline-none focus:border-yellow-500 text-white placeholder-gray-600">
                             </div>
                         </div>
                     </div>
 
                     <button type="submit" class="w-full py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold rounded-xl transition duration-200 glow-green">
-                        إرسال التسجيل لقاعدة البيانات الحية
+                        إرسال التسجيل
                     </button>
                 </form>
 
@@ -204,11 +207,11 @@
             </div>
 
             <!-- جدول استعراض الفرق مع خيارات الإدارة -->
-            <div class="bg-[#091117] border border-emerald-950 rounded-2xl overflow-hidden shadow-xl">
+            <div class="bg-[#070e10] border border-emerald-950 rounded-2xl overflow-hidden shadow-xl">
                 <div class="overflow-x-auto">
                     <table class="w-full text-right border-collapse">
                         <thead>
-                            <tr class="bg-[#050a0e] border-b border-emerald-950/80 text-emerald-400 text-sm font-bold">
+                            <tr class="bg-[#030708] border-b border-emerald-950/80 text-emerald-400 text-sm font-bold">
                                 <th class="p-4">رقم الفريق</th>
                                 <th class="p-4">اللاعب الأول</th>
                                 <th class="p-4">اللاعب الثاني</th>
@@ -235,7 +238,7 @@
 
             <div class="space-y-4">
                 <!-- القانون الأول -->
-                <div class="flex gap-4 p-5 bg-[#091117] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition">
+                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition">
                     <div class="bg-emerald-500/10 text-emerald-400 p-3.5 rounded-xl h-fit">
                         <i class="fa-solid fa-ban text-2xl"></i>
                     </div>
@@ -246,8 +249,8 @@
                 </div>
 
                 <!-- القانون الثاني -->
-                <div class="flex gap-4 p-5 bg-[#091117] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition">
-                    <div class="bg-amber-500/10 text-amber-400 p-3.5 rounded-xl h-fit">
+                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition">
+                    <div class="bg-yellow-500/10 text-yellow-400 p-3.5 rounded-xl h-fit">
                         <i class="fa-solid fa-flag-checkered text-2xl"></i>
                     </div>
                     <div>
@@ -257,7 +260,7 @@
                 </div>
 
                 <!-- القانون الثالث والدعم -->
-                <div class="flex gap-4 p-5 bg-[#091117] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition">
+                <div class="flex gap-4 p-5 bg-[#070e10] rounded-xl border border-emerald-950 hover:border-emerald-500/30 transition">
                     <div class="bg-indigo-500/10 text-indigo-400 p-3.5 rounded-xl h-fit">
                         <i class="fa-brands fa-discord text-2xl"></i>
                     </div>
@@ -275,7 +278,7 @@
     </main>
 
     <!-- تذييل الصفحة (Footer) -->
-    <footer class="border-t border-emerald-950 bg-[#091117] py-6 text-center text-sm text-gray-500">
+    <footer class="border-t border-emerald-950 bg-[#070e10] py-6 text-center text-sm text-gray-500">
         <p>&copy; 2026 سيرفر تيتانيوم - جميع الحقوق محفوظة لـ <span class="text-emerald-500 font-semibold">Titanium Studio</span>.</p>
     </footer>
 
@@ -311,9 +314,9 @@
         // ==========================================
         // إعدادات الإدارة الآمنة (Admin Setup)
         // ==========================================
-        const ADMIN_PIN = "1234"; // رمز مرور الإدارة (قم بتغييره كما تراه مناسباً!)
+        const ADMIN_PIN = "0598"; // رمز مرور الإدارة 
 
-        // الاستماع المباشر وتحديث الجدول تلقائياً
+        // الاستماع المباشر وتحديث الجدول والعدادات بشكل ديناميكي فوري
         database.ref('teams').on('value', (snapshot) => {
             const data = snapshot.val();
             const teamsList = [];
@@ -325,11 +328,19 @@
                         id: key,
                         ...data[key]
                     });
-                    totalPlayersCount += 2;
+                    totalPlayersCount += 2; // كل فريق فيه لاعبين
                 });
             }
 
+            // تحديث العدادات على الواجهة
+            const remaining = MAX_PLAYERS - totalPlayersCount;
             document.getElementById('registeredCount').innerText = totalPlayersCount;
+            
+            // تحديث الشريط العلوي الحي فوراً وبشكل ديناميكي!
+            const remainingEl = document.getElementById('remainingCount');
+            if (remainingEl) {
+                remainingEl.innerText = remaining >= 0 ? remaining : 0;
+            }
 
             const tbody = document.getElementById('teamsTableBody');
             tbody.innerHTML = '';
@@ -350,17 +361,17 @@
                     <td class="p-4 font-bold text-emerald-400">فريق #${index + 1}</td>
                     <td class="p-4">
                         <div class="font-semibold text-white"><i class="fa-brands fa-discord text-indigo-400 ml-1"></i> ${escapeHtml(team.p1Discord)}</div>
-                        <div class="text-xs text-gray-400 mt-0.5">آيدي: <span class="text-amber-400 font-mono">${escapeHtml(team.p1Epic)}</span></div>
+                        <div class="text-xs text-gray-400 mt-0.5">آيدي: <span class="text-yellow-500 font-mono">${escapeHtml(team.p1Epic)}</span></div>
                         <div class="text-[10px] mt-1"><span class="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">${escapeHtml(team.p1Platform)}</span></div>
                     </td>
                     <td class="p-4">
                         <div class="font-semibold text-white"><i class="fa-brands fa-discord text-indigo-400 ml-1"></i> ${escapeHtml(team.p2Discord)}</div>
-                        <div class="text-xs text-gray-400 mt-0.5">آيدي: <span class="text-amber-400 font-mono">${escapeHtml(team.p2Epic)}</span></div>
+                        <div class="text-xs text-gray-400 mt-0.5">آيدي: <span class="text-yellow-500 font-mono">${escapeHtml(team.p2Epic)}</span></div>
                         <div class="text-[10px] mt-1"><span class="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">${escapeHtml(team.p2Platform)}</span></div>
                     </td>
                     <td class="p-4">
                         <div class="flex justify-center gap-2">
-                            <button onclick="editTeam('${team.id}')" class="px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500 hover:text-gray-950 text-amber-500 font-bold rounded-lg text-xs transition">
+                            <button onclick="editTeam('${team.id}')" class="px-3 py-1.5 bg-yellow-500/10 hover:bg-yellow-500 hover:text-gray-950 text-yellow-500 font-bold rounded-lg text-xs transition">
                                 <i class="fa-solid fa-pen-to-square"></i> تعديل
                             </button>
                             <button onclick="deleteTeam('${team.id}')" class="px-3 py-1.5 bg-red-500/10 hover:bg-red-500 hover:text-white text-red-400 font-bold rounded-lg text-xs transition">
@@ -414,7 +425,7 @@
         // 1. وظيفة حذف فريق
         function deleteTeam(teamId) {
             const pin = prompt("هذا الإجراء مخصص للإدارة فقط.\nالرجاء إدخال رمز مرور الإدارة لإتمام عملية الحذف:");
-            if (pin === null) return; // تم إلغاء العملية
+            if (pin === null) return; 
             
             if (pin === ADMIN_PIN) {
                 if (confirm("هل أنت متأكد من رغبتك في حذف هذا الفريق نهائياً من البطولة؟")) {
@@ -433,12 +444,10 @@
             if (pin === null) return;
 
             if (pin === ADMIN_PIN) {
-                // جلب البيانات القديمة أولاً
                 database.ref('teams/' + teamId).once('value').then((snapshot) => {
                     const team = snapshot.val();
                     if (!team) return;
 
-                    // طلب المدخلات الجديدة من الإداري
                     const p1Discord = prompt("تعديل حساب ديسكورد اللاعب الأول:", team.p1Discord);
                     const p1Epic = prompt("تعديل آيدي لعبة اللاعب الأول:", team.p1Epic);
                     const p2Discord = prompt("تعديل حساب ديسكورد اللاعب الثاني:", team.p2Discord);
@@ -465,7 +474,7 @@
             }
         }
 
-        // دالة حماية الموقع
+        // دالة حماية الموقع من الثغرات
         function escapeHtml(text) {
             const map = {
                 '&': '&amp;',
